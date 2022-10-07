@@ -10,6 +10,7 @@ export const fetchRandomData: Epic<AnyAction, any> = (
 ): Observable<Action> => {
   return action$.pipe(
     ofType(ActionType.RANDOM_FETCH),
+    map(() => of(actions.fetchRandomDataStart())),
     switchMap((_action) =>
       from(axios.get('https://jsonplaceholder.typicode.com/todos/1')).pipe(
         map((response) => actions.fecthRandomDataSuccess(response.data)),

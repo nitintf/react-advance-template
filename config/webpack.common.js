@@ -98,18 +98,17 @@ const config = {
         ],
       },
       {
-        test: /\.css$/,
-        include: commonPaths.appEntry,
+        test: /\.css/i,
         use: [
+          {
+            loader: 'style-loader',
+          },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
               modules: true
             }
-          },
-          {
-            loader: 'style-loader',
           },
         ],
       },

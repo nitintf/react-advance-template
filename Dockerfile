@@ -10,5 +10,5 @@ RUN yarn install
 
 COPY ./ /app
 
-EXPOSE 8001
+EXPOSE 3001
 CMD ["yarn", "dev"]

@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers, StateFromReducersMapObject } from 'redux';
 import authReducer, { initialState as authInitialState } from './auth.reducer';
 
 const reducers = {
@@ -9,7 +9,7 @@ export const initialState = {
   users: authInitialState,
 };
 
-const rootReducer = combineReducers<typeof initialState>(reducers);
+const rootReducer = combineReducers(reducers);
 
-export type RootState = ReturnType<typeof rootReducer>;
+export type RootState = StateFromReducersMapObject<typeof reducers>;
 export default rootReducer;
