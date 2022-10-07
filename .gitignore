@@ -1,2 +1,36 @@
-/node_modules
-/dist
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+node_modules
+
+# IDE/Editor data
+.idea
+.vscode
+jsconfig.json
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# local env copy (wildcard so variants can be stored in .env.local.prod etc.)
+.env.local*
+
+#Code coverage files
+test/coverage
+
+dist/*
+node_modules
+
+# Local configurations
+src/config/*.local.js

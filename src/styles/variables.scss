@@ -1,1 +1,29 @@
-$main-color: red;
+// colors
+$color-background: #1a1a1f;
+$color-foreground: #ededea;
+$color-control: #6e51ee;
+$color-selected: #248eff;
+$color-string: #ecd772;
+$color-number: #cad660;
+$color-comment: rgba(247, 247, 243, 0.5);
+$color-keyword: #f24366;
+$color-storage-type: #33bbff;
+$color-class-name: #67d5b6;
+$color-function-argument: #d1c9f7;
+$color-invalid: #f8f8f0;
+$color-helper: #dddddd;
+
+// breakpoints for media-queries
+$breakpoint-phone: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1280px;
+$breakpoint-desktop: 1600px;
+
+// vehicles dashboard colors
+$dashboard-auto-outline: #36bbca;
+$dashboard-auto-background: #0b3543;
+$dashboard-manual-outline: #ff5900;
+$dashboard-manual-background: #56230a;
+$dashboard-expert-outline: #ff1d1d;
+$dashboard-expert-background: #930d0d;
+$dashboard-expert-accent: #d73cf3;

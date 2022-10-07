@@ -11,7 +11,7 @@
     "isolatedModules": true,
     "jsx": "react",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "CommonJS",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
@@ -23,10 +23,10 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "target": "es2017",
-    "strict": false,
+    "strict": true,
     "paths": {
       "app/*": ["src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src/**/*", ".storybook/**/*"]
 }

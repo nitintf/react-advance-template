@@ -20,6 +20,7 @@ const htmlPluginParams = {
 };
 
 const config = {
+  context: commonPaths.projectRoot,
   output: {
     path: commonPaths.outputPath,
     publicPath: '/assests/',
@@ -48,12 +49,13 @@ const config = {
   },
   resolve: {
     alias: {
-      app: commonPaths.appEntry
+      app: commonPaths.appEntry,
+      process: "process/browser"
     },
     fallback: {
       url: false,
     },
-    extensions: ['.js', '.jsx', '.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   plugins: [
     new webpack.IgnorePlugin({

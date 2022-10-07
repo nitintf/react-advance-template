@@ -4,7 +4,7 @@
 	"description": "React Starter with Webpack",
 	"main": "index.tsx",
 	"engines": {
-		"node": "^14.18.0 || ^16.13.2 || >=17.0.0"
+		"node": "^16.17.1"
 	},
 	"scripts": {
 		"clean": "rimraf dist/*",
@@ -32,7 +32,7 @@
 	"author": "Nitin Panwar",
 	"license": "MIT",
 	"dependencies": {
-		"@datadog/browser-rum": "^4.21.1",
+		"@reduxjs/toolkit": "^1.8.5",
 		"@sentry/browser": "^7.14.1",
 		"@storybook/addon-storyshots": "^6.5.12",
 		"@storybook/react": "^6.5.12",
@@ -41,6 +41,7 @@
 		"@types/node": "^18.8.2",
 		"@welldone-software/why-did-you-render": "^7.0.1",
 		"assert": "^2.0.0",
+		"axios": "^1.0.0",
 		"change-case": "^4.1.2",
 		"chroma-js": "^2.4.2",
 		"ejs": "^3.1.8",
@@ -56,6 +57,7 @@
 		"redux": "^4.2.0",
 		"redux-auth-wrapper": "^3.0.0",
 		"redux-devtools-extension": "^2.13.9",
+		"redux-observable": "^2.0.0",
 		"redux-persist": "^6.0.0",
 		"redux-persist-transform-filter": "^0.0.20",
 		"redux-thunk": "^2.4.1",
@@ -97,6 +99,7 @@
 		"cross-env": "^7.0.3",
 		"css-loader": "^6.7.1",
 		"css-minimizer-webpack-plugin": "^4.0.0",
+		"dotenv": "^16.0.3",
 		"eslint": "^8.22.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-import": "^2.26.0",

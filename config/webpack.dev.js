@@ -1,7 +1,11 @@
 const commonPaths = require('./common-paths');
+const webpack = require("webpack")
 const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const dontenv = require("dotenv")
+
+dontenv.config()
 
 const port = process.env.PORT || 3001
 
@@ -31,6 +35,9 @@ const config = {
       filename: 'static/css/[name].[contenthash:8].css',
       chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
     }),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env)
+    }),
     new Serve({
       historyFallback: {
         htmlAcceptHeaders: ["text/html", "*/*"],
@@ -46,7 +53,7 @@ const config = {
       progress: 'minimal',
       waitForBuild: true
     }),
-  ],
+  ]
 }
 
 module.exports = config
