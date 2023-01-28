@@ -3,7 +3,6 @@
 **/.hg
 **/node_modules
 
-branding.js
 deploy/
 dist
 src/__generated__
