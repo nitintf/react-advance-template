@@ -1,0 +1,4 @@
+"*.{jsx,ts,tsx}":
+  - pnpm format
+"*.{jsx,ts,tsx, md}":
+  - pnpm lint:fix
