@@ -1,20 +1,20 @@
 const presets =
-  process.env["NODE_ENV"] === "production"
+  process.env['NODE_ENV'] === 'production'
     ? [
-        ["@babel/preset-env", { targets: { node: "current" } }],
+        ['@babel/preset-env', { targets: { node: 'current' } }],
         [
-          "@babel/preset-react",
+          '@babel/preset-react',
           {
-            runtime: "automatic",
+            runtime: 'automatic',
           },
         ],
-        "@babel/preset-typescript",
+        '@babel/preset-typescript',
       ]
     : null;
 
-const plugins = [["macros"]];
-if (process.env["NODE_ENV"] === "production") {
-  plugins.push(["babel-plugin-transform-vite-meta-env"]);
+const plugins = [['macros']];
+if (process.env['NODE_ENV'] === 'production') {
+  plugins.push(['babel-plugin-transform-vite-meta-env']);
 }
 
 module.exports = { presets, plugins };

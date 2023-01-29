@@ -53,9 +53,10 @@ export const getEnvBoolean = ({
     return getDefault<boolean>(name, defaultValue);
   }
 
-  if (envValue === "true") {
+  if (envValue === 'true') {
     return true;
-  } if (envValue === "false") {
+  }
+  if (envValue === 'false') {
     return false;
   }
 

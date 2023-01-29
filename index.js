@@ -1,15 +1,15 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const express = require("express");
-const helmet = require("helmet");
-const winston = require("winston");
-const path = require("path");
+const express = require('express');
+const helmet = require('helmet');
+const winston = require('winston');
+const path = require('path');
 
 const PORT = process.env.SERVER_PORT || 3000;
 const ENV = process.env.environmentType;
 
 // 🚨WARNING: do NOT include any secrets/API keys below! These vars get
-const serverVars = ["name"];
+const serverVars = ['name'];
 
 const config = {};
 
@@ -20,39 +20,39 @@ for (const value of serverVars) {
 const app = express();
 
 const logger = winston.createLogger({
-  level: "info",
+  level: 'info',
   format: winston.format.json(),
-  defaultMeta: { service: "web-service" },
+  defaultMeta: { service: 'web-service' },
   transports: [new winston.transports.Console({})],
 });
 
 // Vend static resources
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // https://helmetjs.github.io/
-app.use(helmet.frameguard({ action: "deny" }));
+app.use(helmet.frameguard({ action: 'deny' }));
 
 // Only use CORS in the dev environment, otherwise all requests between Starfleet Client/Backend are on the same origin.
-if (ENV === "dev") {
-  const cors = require("cors");
-  app.use(cors({ origin: "*" }));
+if (ENV === 'dev') {
+  const cors = require('cors');
+  app.use(cors({ origin: '*' }));
 }
 
 // Disable "X-Powered-By: Express" HTTP header
-app.disable("x-powered-by");
+app.disable('x-powered-by');
 
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 app.listen(PORT, () => {
   logger.info(`listening on ${PORT}`);
 });
 
 // Setting views path is required to be able to vend index.ejs and related assets/icons
-app.set("views", path.join(__dirname, "./dist"));
-app.get("/_healthz", (_req, res) => res.status(200).send());
-app.get("/_readyz", (_req, res) => res.status(200).send());
+app.set('views', path.join(__dirname, './dist'));
+app.get('/_healthz', (_req, res) => res.status(200).send());
+app.get('/_readyz', (_req, res) => res.status(200).send());
 
 // Returns Starfleet React app
-app.get("*", (_req, res) => {
-  res.render("index.ejs", { serverVars, config });
+app.get('*', (_req, res) => {
+  res.render('index.ejs', { serverVars, config });
 });

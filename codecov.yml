@@ -1,10 +1,10 @@
 comment:
-  layout: "reach, diff, flags, files"
+  layout: 'reach, diff, flags, files'
   require_changes: true
 
 ignore:
-  - "**/__e2e_tests__/*"
-  - "**/__tests__/*"
+  - '**/__e2e_tests__/*'
+  - '**/__tests__/*'
 
 coverage:
   precision: 2

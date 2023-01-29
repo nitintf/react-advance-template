@@ -1,18 +1,18 @@
-import dotenv from "dotenv";
-import path from "path";
-import { defineConfig, loadEnv } from "vite";
-import { ViteEjsPlugin } from "vite-plugin-ejs";
-import svgr from "vite-plugin-svgr";
-import react from "vite-preset-react";
+import dotenv from 'dotenv';
+import path from 'path';
+import { defineConfig, loadEnv } from 'vite';
+import { ViteEjsPlugin } from 'vite-plugin-ejs';
+import svgr from 'vite-plugin-svgr';
+import react from 'vite-preset-react';
 
 dotenv.config();
 
-const serverVars = ["name"];
+const serverVars = ['name'];
 
 const config = {};
 
 export default ({ mode }) => {
-  process.env = { ...process.env, ...loadEnv(mode, process.cwd(), "") };
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd(), '') };
 
   for (const value of serverVars) {
     config[value] = process.env[value];
@@ -21,7 +21,7 @@ export default ({ mode }) => {
   // https://vitejs.dev/config/
   return defineConfig({
     define: {
-      "process.env": process.env,
+      'process.env': process.env,
     },
     plugins: [
       react(),
@@ -39,8 +39,8 @@ export default ({ mode }) => {
       ),
     ],
     server: {
-      base: "localhost",
-      origin: "localhost",
+      base: 'localhost',
+      origin: 'localhost',
       port: 7337,
       host: true,
       open: true,
@@ -55,7 +55,7 @@ export default ({ mode }) => {
       manifest: true,
     },
     resolve: {
-      alias: [{ find: "app", replacement: path.resolve(__dirname, "src") }],
+      alias: [{ find: 'app', replacement: path.resolve(__dirname, 'src') }],
     },
   });
 };
