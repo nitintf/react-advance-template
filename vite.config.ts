@@ -1,7 +1,11 @@
+import dotenv from "dotenv";
+import path from "path";
 import { defineConfig, loadEnv } from "vite";
-import react from "vite-preset-react";
-import svgr from "vite-plugin-svgr";
 import { ViteEjsPlugin } from "vite-plugin-ejs";
+import svgr from "vite-plugin-svgr";
+import react from "vite-preset-react";
+
+dotenv.config();
 
 const serverVars = ["name"];
 
@@ -16,6 +20,9 @@ export default ({ mode }) => {
 
   // https://vitejs.dev/config/
   return defineConfig({
+    define: {
+      "process.env": process.env,
+    },
     plugins: [
       react(),
       svgr(),
@@ -46,6 +53,9 @@ export default ({ mode }) => {
       sourcemap: true,
       minify: true,
       manifest: true,
+    },
+    resolve: {
+      alias: [{ find: "app", replacement: path.resolve(__dirname, "src") }],
     },
   });
 };

@@ -1,4 +1,4 @@
 "*.{jsx,ts,tsx}":
+  - organize-imports-cli
   - pnpm format
-"*.{jsx,ts,tsx, md}":
   - pnpm lint:fix
