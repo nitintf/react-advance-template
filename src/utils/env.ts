@@ -1,8 +1,13 @@
-type EnvProps<T> = {
+import { RequireOnlyOne } from './types';
+
+type EnvPropsType<T> = {
   name: string;
   defaultValue?: T;
   required?: boolean;
 };
+
+// Either pass defaultValue or required as if it is required we should throw error and tell the var is missing otherwise return defaultValue
+type EnvProps<T> = RequireOnlyOne<EnvPropsType<T>, 'defaultValue' | 'required'>;
 
 const getDefault = <T>(variableName: string, defaultValue?: T): T => {
   if (defaultValue === (null || undefined)) {
@@ -19,7 +24,7 @@ export const getEnvString = ({
 }: EnvProps<string>): string => {
   const envValue = process.env[name] as string;
 
-  if (envValue === null && required) {
+  if (envValue === undefined || required) {
     return getDefault<string>(name, defaultValue);
   }
 
@@ -33,7 +38,7 @@ export const getEnvNumber = ({
 }: EnvProps<number>): number => {
   const envValue = process.env[name];
 
-  if (envValue === null && required) {
+  if (envValue === undefined || required) {
     return getDefault<number>(name, defaultValue);
   }
 
@@ -49,7 +54,7 @@ export const getEnvBoolean = ({
 }: EnvProps<boolean>): boolean => {
   const envValue = process.env[name];
 
-  if (envValue === null && required) {
+  if (envValue === undefined || required) {
     return getDefault<boolean>(name, defaultValue);
   }
 

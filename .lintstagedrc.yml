@@ -1,4 +1,8 @@
 '*.{jsx,ts,tsx}':
   - organize-imports-cli
-  - pnpm format
+  - pnpm format:fix
   - pnpm lint:fix
+'*.{md, css, scss}':
+  - pnpm format:fix
+'*.{spec.ts, spec.tsx, test.ts, test.tsx}':
+  - pnpm test:silent

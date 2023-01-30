@@ -43,7 +43,8 @@
     "react/react-in-jsx-scope": "off",
     "react/function-component-definition": "off",
     "import/no-extraneous-dependencies": "off",
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
+    "react/jsx-props-no-spreading": "off"
   },
   "settings": {
     "import/resolver": {

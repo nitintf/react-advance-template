@@ -16,10 +16,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["node"],
+    "types": ["node", "jest"],
     "paths": {
       "app/*": ["src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src/**/*", ".storybook/**/*", "./jest.config.js"]
 }
