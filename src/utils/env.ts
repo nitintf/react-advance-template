@@ -17,14 +17,24 @@ const getDefault = <T>(variableName: string, defaultValue?: T): T => {
   return defaultValue;
 };
 
+const getEnv = (name: string) => {
+  if (typeof document !== undefined) {
+    const metaTag = document.querySelector(`meta[name="server-var"][key="${name}"]`);
+
+    return metaTag?.getAttribute('value') ?? undefined;
+  }
+
+  return undefined;
+};
+
 export const getEnvString = ({
   name,
   defaultValue,
   required = false,
 }: EnvProps<string>): string => {
-  const envValue = process.env[name] as string;
+  const envValue = getEnv(name) as string;
 
-  if (envValue === undefined || required) {
+  if (envValue === (undefined || '') || required) {
     return getDefault<string>(name, defaultValue);
   }
 
@@ -36,9 +46,9 @@ export const getEnvNumber = ({
   defaultValue,
   required = false,
 }: EnvProps<number>): number => {
-  const envValue = process.env[name];
+  const envValue = getEnv(name);
 
-  if (envValue === undefined || required) {
+  if (envValue === (undefined || '') || required) {
     return getDefault<number>(name, defaultValue);
   }
 
@@ -52,9 +62,9 @@ export const getEnvBoolean = ({
   defaultValue,
   required = false,
 }: EnvProps<boolean>): boolean => {
-  const envValue = process.env[name];
+  const envValue = getEnv(name);
 
-  if (envValue === undefined || required) {
+  if (envValue === undefined || envValue === '' || required) {
     return getDefault<boolean>(name, defaultValue);
   }
 

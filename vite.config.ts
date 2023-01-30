@@ -1,13 +1,11 @@
-import dotenv from 'dotenv';
+import 'localenv';
 import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import { ViteEjsPlugin } from 'vite-plugin-ejs';
 import svgr from 'vite-plugin-svgr';
 import react from 'vite-preset-react';
 
-dotenv.config();
-
-const serverVars = ['name'];
+const serverVars = ['BASE_QUERY_URL', 'BASE_WS_URL'];
 
 const config = {};
 

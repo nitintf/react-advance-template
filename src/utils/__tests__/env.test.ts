@@ -1,20 +1,27 @@
 import { getEnvBoolean, getEnvNumber, getEnvString } from '../env';
 
-describe('util - getEnvString', () => {
-  const OLD_ENV = process.env;
+const addMetaTag = () => {
+  const meta = document.createElement('meta');
+  meta.setAttribute('name', 'server-var');
+  meta.setAttribute('key', 'ENV_VAR');
+  document.head.appendChild(meta);
+};
 
+describe('util - getEnvString', () => {
   beforeEach(() => {
     jest.resetModules(); // Most important - it clears the cache
-    process.env = { ...OLD_ENV }; // Make a copy
+    addMetaTag();
   });
 
-  afterAll(() => {
-    process.env = OLD_ENV; // Restore old environment
+  afterEach(() => {
+    const meta = document.querySelector('meta[name="server-var"]');
+    meta?.setAttribute('value', '');
   });
 
   it('Should return env variable with type string', () => {
-    const value = 'Randoom Value';
-    process.env.ENV_VAR = value;
+    const value = 'Random Value';
+    const meta = document.querySelector('meta[name="server-var"]');
+    meta?.setAttribute('value', value);
 
     const envVar = getEnvString({ name: 'ENV_VAR', defaultValue: '' });
     expect(envVar).toBe(value);
@@ -36,20 +43,20 @@ describe('util - getEnvString', () => {
 });
 
 describe('util - getEnvNumber', () => {
-  const OLD_ENV = process.env;
-
   beforeEach(() => {
     jest.resetModules(); // Most important - it clears the cache
-    process.env = { ...OLD_ENV }; // Make a copy
+    addMetaTag();
   });
 
-  afterAll(() => {
-    process.env = OLD_ENV; // Restore old environment
+  afterEach(() => {
+    const meta = document.querySelector('meta[name="server-var"]');
+    meta?.setAttribute('value', '');
   });
 
-  it('Should return env variable with type string', () => {
+  it('Should return env variable with type number', () => {
     const value = '1000';
-    process.env.ENV_VAR = value;
+    const meta = document.querySelector('meta[name="server-var"]');
+    meta?.setAttribute('value', value);
 
     const envVar = getEnvNumber({ name: 'ENV_VAR', defaultValue: 100 });
     expect(envVar).toBe(Number(value));
@@ -71,20 +78,20 @@ describe('util - getEnvNumber', () => {
 });
 
 describe('util - getEnvBoolean', () => {
-  const OLD_ENV = process.env;
-
   beforeEach(() => {
     jest.resetModules(); // Most important - it clears the cache
-    process.env = { ...OLD_ENV }; // Make a copy
+    addMetaTag();
   });
 
-  afterAll(() => {
-    process.env = OLD_ENV; // Restore old environment
+  afterEach(() => {
+    const meta = document.querySelector('meta[name="server-var"]');
+    meta?.setAttribute('value', '');
   });
 
-  it('Should return env variable with type string', () => {
+  it('Should return env variable with type boolean', () => {
     const value = 'true';
-    process.env.ENV_VAR = value;
+    const meta = document.querySelector('meta[name="server-var"]');
+    meta?.setAttribute('value', value);
 
     const envVar = getEnvBoolean({ name: 'ENV_VAR', defaultValue: false });
     expect(envVar).toBe(true);
@@ -100,13 +107,14 @@ describe('util - getEnvBoolean', () => {
   });
 
   it('Should return default value if env var is missing', () => {
-    const envVar = getEnvBoolean({ name: 'ENV_VAR', defaultValue: false });
+    const envVar = getEnvBoolean({ name: 'ENV_VAR_BOOL', defaultValue: false });
     expect(envVar).toBe(false);
   });
 
   it('Should throw parse error if env variable is not able parse into boolean', () => {
-    const value = 'Value';
-    process.env.ENV_VAR = value;
+    const value = 'Wrong';
+    const meta = document.querySelector('meta[name="server-var"]');
+    meta?.setAttribute('value', value);
     const t = () => {
       getEnvBoolean({ name: 'ENV_VAR', required: false });
     };

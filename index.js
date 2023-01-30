@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('localenv');
 
 const express = require('express');
 const helmet = require('helmet');
@@ -9,7 +9,7 @@ const PORT = process.env.SERVER_PORT || 3000;
 const ENV = process.env.environmentType;
 
 // 🚨WARNING: do NOT include any secrets/API keys below! These vars get
-const serverVars = ['name'];
+const serverVars = ['BASE_QUERY_URL', 'BASE_WS_URl'];
 
 const config = {};
 
