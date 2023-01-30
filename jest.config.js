@@ -3,7 +3,7 @@ module.exports = {
   transform: {
     '^.+\\.(ts|tsx|js|jsx)$': 'ts-jest',
   },
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
   testRegex: '.*\\.(test|spec)\\.(ts|js|tsx|jsx)$',
   modulePathIgnorePatterns: ['__e2e_tests__'],
   moduleNameMapper: {
