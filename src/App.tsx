@@ -1,7 +1,6 @@
 import { ApolloProvider } from '@apollo/client';
 import { ErrorCallback } from 'app/components/common';
 import { apolloClient } from 'app/gql/api';
-import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import './App.css';
 

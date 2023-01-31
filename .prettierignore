@@ -6,3 +6,5 @@
 deploy/
 dist
 src/__generated__
+
+pnpm-lock.yaml
