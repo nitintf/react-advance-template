@@ -23,14 +23,14 @@ describe('util - getEnvString', () => {
     const meta = document.querySelector('meta[name="server-var"]');
     meta?.setAttribute('value', value);
 
-    const envVar = getEnvString({ name: 'ENV_VAR', defaultValue: '' });
+    const envVar = getEnvString({ name: 'ENV_VAR' });
     expect(envVar).toBe(value);
     expect(typeof envVar).toBe('string');
   });
 
   it('Should throw error if env var not found and required is true', () => {
     const t = () => {
-      getEnvString({ name: 'ENV_VAR', required: true });
+      getEnvString({ name: 'ENV_VAR' });
     };
 
     expect(t).toThrow('Missing value for enviorment variable ENV_VAR.');
@@ -58,14 +58,14 @@ describe('util - getEnvNumber', () => {
     const meta = document.querySelector('meta[name="server-var"]');
     meta?.setAttribute('value', value);
 
-    const envVar = getEnvNumber({ name: 'ENV_VAR', defaultValue: 100 });
+    const envVar = getEnvNumber({ name: 'ENV_VAR' });
     expect(envVar).toBe(Number(value));
     expect(typeof envVar).toBe('number');
   });
 
   it('Should throw error if env var not found and required is true', () => {
     const t = () => {
-      getEnvNumber({ name: 'ENV_VAR', required: true });
+      getEnvNumber({ name: 'ENV_VAR' });
     };
 
     expect(t).toThrow('Missing value for enviorment variable ENV_VAR.');
@@ -100,7 +100,7 @@ describe('util - getEnvBoolean', () => {
 
   it('Should throw error if env var not found and required is true', () => {
     const t = () => {
-      getEnvBoolean({ name: 'ENV_VAR', required: true });
+      getEnvBoolean({ name: 'ENV_VAR' });
     };
 
     expect(t).toThrow('Missing value for enviorment variable ENV_VAR.');
@@ -116,7 +116,7 @@ describe('util - getEnvBoolean', () => {
     const meta = document.querySelector('meta[name="server-var"]');
     meta?.setAttribute('value', value);
     const t = () => {
-      getEnvBoolean({ name: 'ENV_VAR', required: false });
+      getEnvBoolean({ name: 'ENV_VAR' });
     };
 
     expect(t).toThrow('Could not parse enviorment variable ENV_VAR as Boolean.');

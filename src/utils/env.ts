@@ -1,16 +1,13 @@
-import { RequireOnlyOne } from './types';
-
-type EnvPropsType<T> = {
+type EnvProps<T> = {
   name: string;
   defaultValue?: T;
-  required?: boolean;
 };
 
 // Either pass defaultValue or required as if it is required we should throw error and tell the var is missing otherwise return defaultValue
-type EnvProps<T> = RequireOnlyOne<EnvPropsType<T>, 'defaultValue' | 'required'>;
+// type EnvProps<T> = RequireOnlyOne<EnvPropsType<T>, 'defaultValue' | 'required'>;
 
-const getDefault = <T>(variableName: string, defaultValue?: T): T => {
-  if (defaultValue === (null || undefined)) {
+const getDefault = <T>(variableName: string, defaultValue: T | undefined): T => {
+  if (defaultValue === null || defaultValue === undefined) {
     throw new Error(`Missing value for enviorment variable ${variableName}.`);
   }
 
@@ -27,28 +24,20 @@ const getEnv = (name: string) => {
   return undefined;
 };
 
-export const getEnvString = ({
-  name,
-  defaultValue,
-  required = false,
-}: EnvProps<string>): string => {
-  const envValue = getEnv(name) as string;
+export const getEnvString = ({ name, defaultValue }: EnvProps<string>): string => {
+  const envValue = getEnv(name);
 
-  if (envValue === (undefined || '') || required) {
+  if (!envValue || envValue === '') {
     return getDefault<string>(name, defaultValue);
   }
 
   return envValue;
 };
 
-export const getEnvNumber = ({
-  name,
-  defaultValue,
-  required = false,
-}: EnvProps<number>): number => {
+export const getEnvNumber = ({ name, defaultValue }: EnvProps<number>): number => {
   const envValue = getEnv(name);
 
-  if (envValue === (undefined || '') || required) {
+  if (!envValue || envValue === '') {
     return getDefault<number>(name, defaultValue);
   }
 
@@ -57,14 +46,10 @@ export const getEnvNumber = ({
   return value;
 };
 
-export const getEnvBoolean = ({
-  name,
-  defaultValue,
-  required = false,
-}: EnvProps<boolean>): boolean => {
+export const getEnvBoolean = ({ name, defaultValue }: EnvProps<boolean>): boolean => {
   const envValue = getEnv(name);
 
-  if (envValue === undefined || envValue === '' || required) {
+  if (!envValue || envValue === '') {
     return getDefault<boolean>(name, defaultValue);
   }
 
