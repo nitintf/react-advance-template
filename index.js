@@ -5,11 +5,11 @@ const helmet = require('helmet');
 const winston = require('winston');
 const path = require('path');
 
-const PORT = process.env.SERVER_PORT || 3000;
+const PORT = process.env.SERVER_PORT || 3001;
 const ENV = process.env.environmentType;
 
-// 🚨WARNING: do NOT include any secrets/API keys below! These vars get
-const serverVars = ['BASE_QUERY_URL', 'BASE_WS_URl'];
+// 🚨WARNING: do NOT include any secrets/API keys below! These vars get exposed to client side
+const serverVars = ['baseQueryUrl', 'baseWsUrl'];
 
 const config = {};
 
@@ -52,7 +52,7 @@ app.set('views', path.join(__dirname, './dist'));
 app.get('/_healthz', (_req, res) => res.status(200).send());
 app.get('/_readyz', (_req, res) => res.status(200).send());
 
-// Returns Starfleet React app
+// Returns React app
 app.get('*', (_req, res) => {
   res.render('index.ejs', { serverVars, config });
 });

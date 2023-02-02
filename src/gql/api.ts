@@ -5,8 +5,8 @@ import { getEnvString } from 'app/utils/env';
 import { Kind, OperationTypeNode } from 'graphql';
 import { createClient } from 'graphql-ws';
 
-const BASE_QUERY_URL = getEnvString({ name: 'BASE_QUERY_URL', required: true });
-const BASE_WS_URL = getEnvString({ name: 'BASE_WS_URL', required: true });
+const BASE_QUERY_URL = getEnvString({ name: 'baseQueryUrl' });
+const BASE_WS_URL = getEnvString({ name: 'baseWsUrl' });
 
 const httpLink = new HttpLink({
   uri: BASE_QUERY_URL,

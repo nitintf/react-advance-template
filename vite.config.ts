@@ -5,7 +5,7 @@ import { ViteEjsPlugin } from 'vite-plugin-ejs';
 import svgr from 'vite-plugin-svgr';
 import react from 'vite-preset-react';
 
-const serverVars = ['BASE_QUERY_URL', 'BASE_WS_URL'];
+const serverVars = ['baseQueryUrl', 'baseWsUrl'];
 
 const config = {};
 
