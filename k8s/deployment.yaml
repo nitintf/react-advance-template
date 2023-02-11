@@ -24,7 +24,7 @@ spec:
             - containerPort: 3001
           envFrom:
             - configMapRef:
-                name: vite-react-app 
+                name: vite-react-app
           # livenessProbe:
           #   httpGet:
           #     path: "/_healthz"
@@ -44,4 +44,4 @@ spec:
           #   initialDelaySeconds: 10
           #   periodSeconds: 5
           #   successThreshold: 1
-          #   timeoutSeconds: 2 
+          #   timeoutSeconds: 2
